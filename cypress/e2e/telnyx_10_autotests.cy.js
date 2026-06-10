@@ -1,8 +1,7 @@
 describe('Telnyx E2E Smoke Tests', () => {
 
   beforeEach(() => {
-    cy.viewport(1920, 1080)
-    cy.visit('https://telnyx.com')
+    cy.visit('/')
   })
 
   it('TC-01: Verifying Telnyx main homepage loads successfully', () => {
@@ -26,7 +25,7 @@ describe('Telnyx E2E Smoke Tests', () => {
       return false 
     })
 
-    cy.visit('https://telnyx.com/pricing/elastic-sip')
+    cy.visit('/pricing/elastic-sip')
     
     
     cy.contains('Download pricing').scrollIntoView()
@@ -43,7 +42,7 @@ describe('Telnyx E2E Smoke Tests', () => {
   })
 
   it('TC-04: Verifying error message when signing up with an invalid email address', () => {
-    cy.visit('https://telnyx.com/sign-up')
+    cy.visit('/sign-up')
     cy.url().should('include', '/sign-up') 
 
     
@@ -67,7 +66,7 @@ describe('Telnyx E2E Smoke Tests', () => {
     
     cy.on('uncaught:exception', () => false)
     
-    cy.visit('https://telnyx.com/contact-us') 
+    cy.visit('/contact-us') 
     cy.contains('h1', 'Talk to an expert').should('be.visible') 
     
     cy.get('form#mktoForm_1987', { timeout: 10000 }).should('be.visible')
@@ -80,7 +79,7 @@ describe('Telnyx E2E Smoke Tests', () => {
   it('TC-06: Verifying the "Pricing" page loads successfully', () => {
     cy.on('uncaught:exception', () => false) 
 
-    cy.visit('https://telnyx.com/pricing')
+    cy.visit('/pricing')
 
     cy.url().should('include', '/pricing')
     
@@ -103,7 +102,7 @@ describe('Telnyx E2E Smoke Tests', () => {
 
   it('TC-08: Verifying validation error for a weak password during Sign Up', () => {
     cy.on('uncaught:exception', () => false) 
-    cy.visit('https://telnyx.com/sign-up')
+    cy.visit('/sign-up')
     cy.url().should('include', '/sign-up')
 
     
@@ -139,7 +138,7 @@ describe('Telnyx E2E Smoke Tests', () => {
     cy.clearAllLocalStorage()
     cy.clearAllSessionStorage()
     
-    cy.visit('https://telnyx.com') 
+    cy.visit('/') 
 
     cy.get('#onetrust-banner-sdk', { timeout: 15000 }).should('be.visible')
 
