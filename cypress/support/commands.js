@@ -6,12 +6,15 @@ Cypress.Commands.add('ignoreThirdPartyErrors', () => {
   cy.on('uncaught:exception', () => false)
 })
 
-// 2. Глобальный куки-баннер (всплывает везде)
+// 2. Глобальный куки-баннер
 Cypress.Commands.add('closeCookieBanner', () => {
   cy.get('#onetrust-banner-sdk', { timeout: 15000 }).should('be.visible')
-  cy.get('#onetrust-close-btn-container button')
+  
+  
+  cy.get('#onetrust-close-btn-container button', { timeout: 15000 })
     .should('be.visible')
     .click({ force: true })
+    
   cy.get('#onetrust-banner-sdk').should('not.be.visible')
 })
 
