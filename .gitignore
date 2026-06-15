@@ -4,4 +4,5 @@ cypress/screenshots/
 cypress/videos/
 cypress/reports/
 cypress/e2e/telnyx_smoke_copy.cy.js
+cypress/e2e/telnyx_10_autotests_copy1.cy.js
 .DS_Store

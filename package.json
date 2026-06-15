@@ -4,7 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:staging": "cypress run --config-file cypress.staging.config.js",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox --headless",
+    "cy:run:edge": "cypress run --browser edge --spec 'cypress/e2e/**/*.cy.js'",
+    "cy:run:record": "cypress run --record --key 13ngw6",
+    "cy:run:staging:record": "cypress run --config-file cypress.staging.config.js --record --key 13ngw6 --browser chrome",
+    "cy:run:smoke": "cypress run --spec 'cypress/e2e/smoke/**/*.cy.js'",
+    "cy:run:regression": "cypress run --spec 'cypress/e2e/regression/**/*.cy.js'",
+    "cy:run:slow-mo": "cypress run --config watchForFileChanges=false,defaultCommandTimeout=10000",
+    "cy:run:no-video": "cypress run --config video=false,screenshotOnRunFailure=false",
+    "cy:clear:cache": "cypress cache clear && cypress verify"
   },
   "keywords": [],
   "author": "",

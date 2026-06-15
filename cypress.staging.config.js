@@ -5,6 +5,6 @@ module.exports = defineConfig({
   ...baseConfig,
   e2e: {
     ...baseConfig.e2e,
-    baseUrl: 'https://staging.telnyx.com',
+    baseUrl: 'https://telnyx.com',
   },
 })

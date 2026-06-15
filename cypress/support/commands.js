@@ -1,25 +1,24 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Custom Cypress commands for repeated Telnyx test actions.
+// They are available in specs as cy.commandName(...).
+
+// 1. Глобальный игнор ошибок сторонних скриптов
+Cypress.Commands.add('ignoreThirdPartyErrors', () => {
+  cy.on('uncaught:exception', () => false)
+})
+
+// 2. Глобальный куки-баннер (всплывает везде)
+Cypress.Commands.add('closeCookieBanner', () => {
+  cy.get('#onetrust-banner-sdk', { timeout: 15000 }).should('be.visible')
+  cy.get('#onetrust-close-btn-container button')
+    .should('be.visible')
+    .click({ force: true })
+  cy.get('#onetrust-banner-sdk').should('not.be.visible')
+})
+
+// 3. Глобальный метод авторизации для будущих тестов
+Cypress.Commands.add('login', (email, password) => {
+  cy.visit('/login')
+  cy.get('input[type="email"]').should('be.visible').type(email)
+  cy.get('input[type="password"]').should('be.visible').type(password)
+  cy.get('button[type="submit"]').click()
+})
