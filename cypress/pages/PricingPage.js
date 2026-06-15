@@ -19,10 +19,14 @@ class PricingPage {
   }
 
   fillDownloadForm({ firstName, lastName, email }) {
-    this.downloadSection.scrollIntoView();
-    this.firstNameInput.should('be.visible').type(firstName);
-    this.lastNameInput.type(lastName);
-    this.emailInput.type(email);
+  this.downloadSection.scrollIntoView();
+  
+  cy.get('input#FirstName', { timeout: 15000 })
+    .should('be.visible')
+    .type(firstName);
+    
+  this.lastNameInput.type(lastName);
+  this.emailInput.type(email);
   }
 
   submitDownloadForm() {
