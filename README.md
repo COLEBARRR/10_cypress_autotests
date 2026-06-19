@@ -4,7 +4,7 @@ This repository contains an end-to-end smoke test suite for the **Telnyx** websi
 
 The project includes 10 automated test cases that cover key user flows: homepage loading, Contact Us navigation, pricing pages, form validation, careers navigation, chat interaction, and cookie banner handling.
 
-===========================================================================================================================================
+---
 ## Quick Links
 
 - **GitHub Repository:** [View Repository](https://github.com/COLEBARRR/10_cypress_autotests)
@@ -12,7 +12,7 @@ The project includes 10 automated test cases that cover key user flows: homepage
 - **Test Reports:** [View Cypress Cloud Dashboard](https://cloud.cypress.io/projects/1n3gw6/runs)
 - **Test Cases:** [View Google Docs test cases](https://docs.google.com/spreadsheets/d/1JRK-pL_pn71jGFu6urKOmFrr4flrFr2he1ZARNJyjno/edit?usp=sharing)
 
-===========================================================================================================================================
+---
 ## Prerequisites
 
 Before running the tests, make sure you have installed:
@@ -25,7 +25,7 @@ You can check your installed versions with:
 node -v
 npm -v
 
-===========================================================================================================================================
+---
 ## Installation
 
 Clone the repository:
@@ -40,7 +40,7 @@ Install project dependencies:
 
 npm install
 
-===========================================================================================================================================
+---
 ## How To Run Tests
 
 The project uses npm scripts from package.json to make Cypress commands shorter and easier to run.
@@ -51,91 +51,91 @@ npm run cy:open
 
 Opens Cypress in interactive mode. This is useful for debugging tests and running specs manually.
 
-===========================================================================================================================================
+---
 ### Run All Tests
 
 npm run cy:run
 
 Runs all Cypress tests in headless mode using the default cypress.config.js.
 
-===========================================================================================================================================
+---
 ### Run Tests With Staging Config
 
 npm run cy:run:staging
 
 Runs tests using cypress.staging.config.js.
 
-===========================================================================================================================================
+---
 ### Run Tests In Chrome
 
 npm run cy:run:chrome
 
 Runs all tests in the Chrome browser.
 
-===========================================================================================================================================
+---
 ### Run Tests In Firefox
 
 npm run cy:run:firefox
 
 Runs all tests in Firefox in headless mode.
 
-===========================================================================================================================================
+---
 ### Run Tests In Edge
 
 npm run cy:run:edge
 
 Runs all .cy.js tests from the cypress/e2e folder in Microsoft Edge.
 
-===========================================================================================================================================
+---
 ### Run And Record To Cypress Cloud
 
 npm run cy:run:record
 
 Runs tests and records the result to Cypress Cloud using the configured Cypress project.
 
-===========================================================================================================================================
+---
 ### Run Staging Tests And Record To Cypress Cloud
 
 npm run cy:run:staging:record
 
 Runs tests with the staging config in Chrome and records the result to Cypress Cloud.
 
-===========================================================================================================================================
+---
 ### Run Smoke Tests
 
 npm run cy:run:smoke
 
 Runs specs from cypress/e2e/smoke//*.cy.js.
 
-===========================================================================================================================================
+---
 ### Run Regression Tests
 
 npm run cy:run:regression
 
 Runs specs from cypress/e2e/regression//*.cy.js.
 
-===========================================================================================================================================
+---
 ### Run Tests With Longer Timeout
 
 npm run cy:run:slow-mo
 
 Runs tests with defaultCommandTimeout=10000. This is useful when the tested website loads dynamic content slowly.
 
-===========================================================================================================================================
+---
 ### Run Tests Without Video And Screenshots
 
 npm run cy:run:no-video
 
 Runs tests with video recording disabled and screenshots on failure disabled.
 
-===========================================================================================================================================
+---
 ### Clear Cypress Cache
 
 npm run cy:clear:cache
 
 Clears the Cypress cache and verifies the Cypress installation.
 
-===========================================================================================================================================
+---
 ## Project Architecture & Design Patterns
 
 To ensure high maintainability, readability, and scalability, this project utilizes the Page Object Model (POM) pattern combined with targeted Custom Cypress Commands.
@@ -156,7 +156,7 @@ PricingPage.js: Contains elements for general rates and targeted product sheets 
 
 CareersPage.js: Represents the recruiting page view and outbound application tracking connections.
 
-===========================================================================================================================================
+---
 ### 2. Custom Cypress Commands
 
 Global, shared, and infrastructure-level test steps that are cross-cutting across multiple functional views are stored in:
@@ -171,7 +171,7 @@ cy.closeCookieBanner(): Closes the OneTrust cookie standard modal regardless of 
 
 cy.login(email, password): A shared programmatic session hook prepared for upcoming user-restricted verification routes.
 
-===========================================================================================================================================
+---
 ### Example Refactored Test View Usage
 
 import SignUpPage from '../pages/SignUpPage'
@@ -192,7 +192,7 @@ it('TC-08: Verifying validation error for a weak password during Sign Up', () =>
   SignUpPage.passwordErrorMessage.should('be.visible')
 })
 
-===========================================================================================================================================
+---
 ## Configuration
 
 The project uses two Cypress configuration files:
@@ -209,7 +209,7 @@ viewportWidth: 1920
 
 viewportHeight: 1080
 
-===========================================================================================================================================
+---
 ## CI/CD
 
 GitHub Actions runs the main Cypress spec on every push, except pushes that only change README.md.
