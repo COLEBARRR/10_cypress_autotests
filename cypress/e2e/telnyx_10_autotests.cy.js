@@ -7,6 +7,7 @@ import CareersPage from '../pages/CareersPage'
 describe('Telnyx E2E Smoke Tests (POM)', () => {
 
   beforeEach(() => {
+    cy.fixture('testData').as('globalData')
     MainPage.open()
   })
 
@@ -21,23 +22,23 @@ describe('Telnyx E2E Smoke Tests (POM)', () => {
     ContactUsPage.submitButton.should('be.visible')
   })
 
-  it('TC-03: Verifying transition to "SIP Trunking" pricing page and "Download pricing" form', () => {
+  it('TC-03: Verifying transition to "SIP Trunking" pricing page and "Download pricing" form', function () {
     cy.ignoreThirdPartyErrors() 
     PricingPage.openElasticSip()
 
     PricingPage.fillDownloadForm({
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'business@business.com',
+      firstName: this.globalData.downloadPricing.firstName,
+      lastName: this.globalData.downloadPricing.lastName,
+      email: this.globalData.downloadPricing.email,
     })
     PricingPage.submitDownloadForm()
   })
 
-  it('TC-04: Verifying error message when signing up with an invalid email address', () => {
+  it('TC-04: Verifying error message when signing up with an invalid email address', function () {
     SignUpPage.open()
     cy.url().should('include', '/sign-up') 
 
-    SignUpPage.fillEmail('test@')
+    SignUpPage.fillEmail(this.globalData.invalidSignUp.email)
     SignUpPage.submit()
 
     SignUpPage.emailInput.then(($input) => {
@@ -73,16 +74,16 @@ describe('Telnyx E2E Smoke Tests (POM)', () => {
     CareersPage.greenhouseLinks.should('have.length.greaterThan', 0)
   })
 
-  it('TC-08: Verifying validation error for a weak password during Sign Up', () => {
+  it('TC-08: Verifying validation error for a weak password during Sign Up', function () {
     cy.ignoreThirdPartyErrors()
     SignUpPage.open()
     cy.url().should('include', '/sign-up')
 
     SignUpPage.fillForm({
       email: `qa-${Date.now()}@example.com`,
-      firstName: 'test1',
-      lastName: 'test1',
-      password: '12345',
+      firstName: this.globalData.weakPasswordSignUp.firstName,
+      lastName: this.globalData.weakPasswordSignUp.lastName,
+      password: this.globalData.weakPasswordSignUp.password,
     })
     SignUpPage.submitForm()
     SignUpPage.submit() 

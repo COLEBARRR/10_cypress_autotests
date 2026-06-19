@@ -1,0 +1,15 @@
+{
+  "downloadPricing": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "business@business.com"
+  },
+  "invalidSignUp": {
+    "email": "test@"
+  },
+  "weakPasswordSignUp": {
+    "firstName": "test1",
+    "lastName": "test1",
+    "password": "12345"
+  }
+}

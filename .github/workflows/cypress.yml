@@ -15,10 +15,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # Указываем Cypress запустить именно твой конкретный файл с тестами
           spec: cypress/e2e/telnyx_10_autotests.cy.js
           record: true
         env:
-          # Сюда пишем НАЗВАНИЕ секретной переменной. GitHub сам подставит ключ.
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
